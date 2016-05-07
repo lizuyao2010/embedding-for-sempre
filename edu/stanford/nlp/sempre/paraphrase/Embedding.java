@@ -199,7 +199,8 @@ public class Embedding implements MemUsage.Instrumented {
 
         double[] res = new double[opts.vecCapacity];
         int numOfAddedTokens=0;
-        String[] tokens=question.replaceAll("[" + "?" + "]+$", "").toLowerCase().split("\\s");
+        //String[] tokens=question.replaceAll("[" + "?" + "]+$", "").toLowerCase().split("\\s");
+        String[] tokens=question.replaceAll("[" + "?" + "]+$", "").replaceAll(" ","_").toLowerCase().split("\\s");
         for(int i = 0; i < tokens.length; ++i) {
             if((vsmPhraseRep==PhraseRep.CW_ADDITIVE || vsmPhraseRep==PhraseRep.CW_AVG))
                 continue;
